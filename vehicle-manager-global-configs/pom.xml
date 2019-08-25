@@ -58,6 +58,7 @@
 				<directory>src/main/resources</directory>
 				<includes>
 					<include>*.properties</include>
+					<include>global-configs/</include>
 				</includes>
 			</resource>
 		</resources>
