@@ -60,6 +60,8 @@ public class VehicleController {
 		
 		// if successful, update h2 Db
 		if(pos.getIsCurrent()){
+			System.out.println("Successful GetPosition!");
+			if(vehicle == null) vehicle = new Vehicle();
 			vehicle.setLat(pos.getLat());
 			vehicle.setLng(pos.getLng());
 			vehicle.setTimestamp(pos.getTimestamp());
