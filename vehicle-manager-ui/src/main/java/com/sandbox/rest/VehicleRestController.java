@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import com.sandbox.constants.CommonConstants;
 import com.sandbox.data.VehicleRepository;
 import com.sandbox.domain.Vehicle;
 import com.sandbox.models.VehicleList;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping(CommonConstants.SLASH)
 public class VehicleRestController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(VehicleRestController.class);
-	
 	@Autowired
 	private VehicleRepository data;
 	
-	@RequestMapping("/vehicles")
+	@RequestMapping(CommonConstants.SLASH+CommonConstants.VEHICLES)
 	public VehicleList allVehicles(){
 		if(LOGGER.isDebugEnabled()) 
 			LOGGER.debug("Entered allVehicles");
@@ -31,13 +31,12 @@ public class VehicleRestController {
 		return new VehicleList(all);
 	}
 	
-	@RequestMapping(value = "/vehicles", method = RequestMethod.POST)
+	@RequestMapping(value = CommonConstants.SLASH+CommonConstants.VEHICLES, method = RequestMethod.POST)
 	public ResponseEntity<Vehicle> createANewVehicle(@RequestBody Vehicle vehicle){
-		if(LOGGER.isDebugEnabled()) 
+		if(LOGGER.isDebugEnabled())
 			LOGGER.debug("Entered createANewVehicle");
 		data.save(vehicle);
-		
-		if(LOGGER.isDebugEnabled()) 
+		if(LOGGER.isDebugEnabled())
 			LOGGER.debug("Exited createANewVehicle");
 		return new ResponseEntity<Vehicle>(vehicle, HttpStatus.CREATED);
 	}

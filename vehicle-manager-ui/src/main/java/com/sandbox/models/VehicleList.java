@@ -4,9 +4,10 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import com.sandbox.constants.CommonConstants;
 import com.sandbox.domain.Vehicle;
 
-@XmlRootElement(name="vehicles")
+@XmlRootElement(name=CommonConstants.VEHICLES)
 public class VehicleList
 {
 	private List<Vehicle> vehicles;
@@ -17,7 +18,7 @@ public class VehicleList
 		this.vehicles = vehicles;
 	}
 
-	@XmlElement(name="vehicle")
+	@XmlElement(name=CommonConstants.VEHICLE)
 	public List<Vehicle> getVehicles() {
 		return vehicles;
 	}

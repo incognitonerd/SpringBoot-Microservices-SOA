@@ -5,9 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import com.sandbox.constants.CommonConstants;
 import com.sandbox.data.VehicleRepository;
 import com.sandbox.domain.Vehicle;
 import com.sandbox.models.Position;
@@ -23,7 +26,7 @@ public class PositionLocatorService {
 	@Autowired
 	private RemotePositionServiceCalls remoteServiceCalls;
 	
-	@HystrixCommand(fallbackMethod = "handleGetPositionDown")
+	@HystrixCommand(fallbackMethod = CommonConstants.GET_POSITION_FALLBACKMETHOD)
 	public Position getPosition(String name){
 		if(LOGGER.isDebugEnabled()) 
 			LOGGER.debug("Entered getPosition");
@@ -36,7 +39,7 @@ public class PositionLocatorService {
 	}
 	
 	public Position handleGetPositionDown(String name){
-		LOGGER.info("Entered handleGetPositionDown - Fallback is being used");
+		LOGGER.info("Entered handleGetPositionDown - Executing Fallback");
 		
 		Position pos = new Position();
 		pos.setIsCurrent(false);
