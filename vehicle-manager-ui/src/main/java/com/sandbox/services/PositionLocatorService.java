@@ -1,4 +1,6 @@
 package com.sandbox.services;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -6,12 +8,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.sandbox.controllers.Position;
 import com.sandbox.data.VehicleRepository;
 import com.sandbox.domain.Vehicle;
+import com.sandbox.models.Position;
+import com.sandbox.rest.VehicleRestController;
 
 @Service
 public class PositionLocatorService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(PositionLocatorService.class);
+
 	@Autowired
 	private VehicleRepository vehicleRepo;
 	
@@ -20,14 +25,19 @@ public class PositionLocatorService {
 	
 	@HystrixCommand(fallbackMethod = "handleGetPositionDown")
 	public Position getPosition(String name){
+		if(LOGGER.isDebugEnabled()) 
+			LOGGER.debug("Entered getPosition");
 		Position position = remoteServiceCalls.getPosition(name);
 		position.setIsCurrent(true);
 		
+		if(LOGGER.isDebugEnabled()) 
+			LOGGER.debug("Exited getPosition");
 		return position;
 	}
 	
 	public Position handleGetPositionDown(String name){
-		System.out.println("handleGetPositionDown fallback is being used");
+		LOGGER.info("Entered handleGetPositionDown - Fallback is being used");
+		
 		Position pos = new Position();
 		pos.setIsCurrent(false);
 		
@@ -35,7 +45,8 @@ public class PositionLocatorService {
 		pos.setLat(vehicle.getLat());
 		pos.setLng(vehicle.getLng());
 		pos.setTimestamp(vehicle.getTimestamp());
-		
+		if(LOGGER.isDebugEnabled()) 
+			LOGGER.debug("Exited handleGetPositionDown");
 		return pos;
 	}
 }

@@ -3,7 +3,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.sandbox.controllers.Position;
+import com.sandbox.models.Position;
 
 @FeignClient(name = "vehicle-position-tracking")
 public interface RemotePositionServiceCalls {

@@ -12,10 +12,7 @@ public class FirstController {
 	@RequestMapping("/home.html")
 	public ModelAndView firstPage()
 	{
-		Date dateAndTime = new Date();
-		
-		// TODO We will use a proper view resolver very quickly
+		Date dateAndTime = new Date();	
 		return new ModelAndView("welcome", "dateAndTime", dateAndTime);
 	}
-	
 }

@@ -1,4 +1,4 @@
-package com.sandbox.controllers;
+package com.sandbox.models;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;

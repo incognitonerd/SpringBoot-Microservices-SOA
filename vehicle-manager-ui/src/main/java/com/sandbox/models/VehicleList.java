@@ -1,4 +1,4 @@
-package com.sandbox.rest;
+package com.sandbox.models;
 
 import java.util.List;
 
@@ -13,8 +13,7 @@ public class VehicleList
 	
 	public VehicleList() {}
 	
-	public VehicleList(List<Vehicle> vehicles)
-	{
+	public VehicleList(List<Vehicle> vehicles){
 		this.vehicles = vehicles;
 	}
 
@@ -26,6 +25,4 @@ public class VehicleList
 	public void setVehicles(List<Vehicle> vehicles) {
 		this.vehicles = vehicles;
 	}
-	
-	
 }
