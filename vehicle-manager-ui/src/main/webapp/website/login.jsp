@@ -3,12 +3,12 @@
 
 <html>
 	<head>
-		<title>Login to FleetMan</title>
+		<title>Login to Vehicle Manager</title>
 	</head>		
 
 	<body>
 	
-		<h1><strong>Welcome to FleetMan</strong></h1>
+		<h1><strong>Welcome to Vehicle Manager</strong></h1>
 						
 		<c:url value="/website/login" var="loginUrl"/>
 		
