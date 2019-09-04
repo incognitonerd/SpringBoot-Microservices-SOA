@@ -5,8 +5,9 @@ Simple Services-Oriented Architecture project made of five independent Spring Bo
 Cloud Environment -  
 * AWS IAM - Access management: Users, Roles, Groups, and Policies
 * AWS EC2 - Application management
-* AWS S3 - Storage for my Jars and 
+* AWS S3 - Storage for the jars 
 * AWS Elastic Beanstalk - Scalable Application Servers
+* AWS ActiveMq - Message Broker
 
 Dev Environment -  
 * Github - Code repository  
