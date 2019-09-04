@@ -2,6 +2,12 @@
 
 Simple Services-Oriented Architecture project made of five independent Spring Boot Applications that displays a few basic architectural principles such as messaging, load balancing, registering services, and centralizing global configurations.
 
+Cloud Environment -  
+* AWS IAM - Access management: Users, Roles, Groups, and Policies
+* AWS EC2 - Application management
+* AWS S3 - Storage for my Jars and 
+* AWS Elastic Beanstalk - Scalable Application Servers
+
 Dev Environment -  
 * Github - Code repository  
 * Macbook Pro - My personal machine  
